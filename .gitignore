@@ -1,0 +1,4 @@
+/src/gen
+/.idea
+.DS_Store
+.env
