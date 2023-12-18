@@ -13,9 +13,7 @@ import (
 )
 
 func initOpenAi (c *config.Config) *openai.Client {
-	fmt.Println(c.OpenAiAPIKey)
 	client := openai.NewClient(c.OpenAiAPIKey)
-	fmt.Println(client)
 	return client
 
 }

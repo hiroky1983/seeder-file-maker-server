@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -13,8 +14,12 @@ func(a *App) Prompt(c *gin.Context)  {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to read request body"})
 		return
 	}
-	prmpt := a.PromptUseCase.Prompt(a.OpenAiAPIKey, string(bodyBytes))
+	prmpt, err := a.PromptUseCase.Prompt(a.OpenAiAPIKey, string(bodyBytes))
+	if err != nil {
+		fmt.Println(err)
+		c.JSON(400, gin.H{"message": err})
+	}
 	c.JSON(200, gin.H{
 		"prompt": prmpt,
-	})
-}
+		})
+	}

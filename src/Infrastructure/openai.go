@@ -2,7 +2,6 @@ package infrastructure
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/sashabaranov/go-openai"
 )
@@ -13,7 +12,7 @@ func NewPrompt() *Prompt {
 	return &Prompt{}
 }
 
-func (p *Prompt) Prompt(c *openai.Client, prom string) string {
+func (p *Prompt) Prompt(c *openai.Client, prom string) (string, error) {
 	resp, err := c.CreateChatCompletion(
 		context.Background(),
 		openai.ChatCompletionRequest{
@@ -28,9 +27,8 @@ func (p *Prompt) Prompt(c *openai.Client, prom string) string {
 	)
 
 	if err != nil {
-		fmt.Printf("ChatCompletion error: %v\n", err)
-		return ""
+		return "", err
 	}
 
-	return resp.Choices[0].Message.Content
+	return resp.Choices[0].Message.Content, nil
 }
