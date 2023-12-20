@@ -17,7 +17,8 @@ func(a *App) Prompt(c *gin.Context)  {
 	prmpt, err := a.PromptUseCase.Prompt(a.OpenAiAPIKey, string(bodyBytes))
 	if err != nil {
 		fmt.Println(err)
-		c.JSON(400, gin.H{"message": err})
+		c.JSON(400, gin.H{"message": err.Error()})
+		return
 	}
 	c.JSON(200, gin.H{
 		"prompt": prmpt,
