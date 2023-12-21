@@ -9,7 +9,7 @@ up:
 	docker-compose up -d
 
 tidy:
-	docker-compose exec app-app go mod tidy
+	docker-compose exec app go mod tidy
 
 api-goget:
 	docker-compose exec app go get ${MOD}
