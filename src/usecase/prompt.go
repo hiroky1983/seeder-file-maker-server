@@ -7,6 +7,7 @@ import (
 
 	"github.com/sashabaranov/go-openai"
 )
+
 type PromptUseCase interface {
 	Prompt(*openai.Client, string) (string, error)
 }

@@ -8,7 +8,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func(a *App) Prompt(c *gin.Context)  {
+func (a *App) Prompt(c *gin.Context) {
 	bodyBytes, err := ioutil.ReadAll(c.Request.Body)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to read request body"})
@@ -22,5 +22,5 @@ func(a *App) Prompt(c *gin.Context)  {
 	}
 	c.JSON(200, gin.H{
 		"prompt": prmpt,
-		})
-	}
+	})
+}

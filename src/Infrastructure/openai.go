@@ -28,7 +28,7 @@ func (p *Prompt) Prompt(c *openai.Client, prom string) (string, error) {
 					Content: prom,
 				},
 			},
-			Temperature:0.0,
+			Temperature: 0.0,
 			MaxTokens:   maxTokens,
 		},
 	)

@@ -7,13 +7,13 @@ import (
 )
 
 type App struct {
-	OpenAiAPIKey *openai.Client
+	OpenAiAPIKey  *openai.Client
 	PromptUseCase usecase.PromptUseCase
 }
 
 func NewApp(OpenAiAPIKey *openai.Client, PromptUseCase usecase.PromptUseCase) *App {
 	return &App{
-		OpenAiAPIKey: OpenAiAPIKey,
+		OpenAiAPIKey:  OpenAiAPIKey,
 		PromptUseCase: PromptUseCase,
 	}
 }

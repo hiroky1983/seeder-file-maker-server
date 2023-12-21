@@ -31,7 +31,7 @@ func TestPrompt_Prompt(t *testing.T) {
 						return "test", nil
 					},
 				},
-		},
+			},
 			args: args{
 				prom: "CREATE TABLE test (id int);",
 			},

@@ -7,9 +7,9 @@ import (
 )
 
 type Config struct {
-	Env string `envconfig:"ENVIRONMENT" required:"true"`
-	AppName string `envconfig:"APP_NAME" required:"true"`
-	AppPort string `envconfig:"APP_PORT" required:"true" default:"8080"`
+	Env          string `envconfig:"ENVIRONMENT" required:"true"`
+	AppName      string `envconfig:"APP_NAME" required:"true"`
+	AppPort      string `envconfig:"APP_PORT" required:"true" default:"8080"`
 	OpenAiAPIKey string `envconfig:"OPEN_AI_API_KEY" required:"true"`
 }
 

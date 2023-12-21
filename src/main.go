@@ -12,7 +12,7 @@ import (
 	openai "github.com/sashabaranov/go-openai"
 )
 
-func initOpenAi (c *config.Config) *openai.Client {
+func initOpenAi(c *config.Config) *openai.Client {
 	client := openai.NewClient(c.OpenAiAPIKey)
 	return client
 
@@ -30,8 +30,8 @@ func main() {
 		o,
 		usecase.NewPrompt(infrastructure.NewPrompt()),
 	)
-	
+
 	r := router.NewRouter(api)
-	
-  r.Run() 
+
+	r.Run()
 }
