@@ -1,6 +1,6 @@
 include .env
 
-.PHONY: proto proto-lint
+.PHONY: test
 
 build:
 	docker-compose build
