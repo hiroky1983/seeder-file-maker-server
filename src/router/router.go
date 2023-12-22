@@ -1,7 +1,9 @@
 package router
 
 import (
+	"context"
 	"net/http"
+	"seeder-app/config"
 	"seeder-app/controller"
 	"time"
 
@@ -11,10 +13,11 @@ import (
 
 func NewRouter(a *controller.App) *gin.Engine {
 	r := gin.Default()
+	cnf, _ := config.NewConfig(context.Background())
 	r.Use(cors.New(cors.Config{
 		// アクセスを許可したいアクセス元
 		AllowOrigins: []string{
-			"http://localhost:3000",
+			cnf.AppURL,
 		},
 		// アクセスを許可したいHTTPメソッド(以下の例だとPUTやDELETEはアクセスできません)
 		AllowMethods: []string{

@@ -10,6 +10,7 @@ services:
       ENVIRONMENT: ${ENVIRONMENT}
       APP_NAME: ${APP_NAME}
       APP_PORT: ${APP_PORT}
+      APP_URL: ${APP_URL}
       OPEN_AI_API_KEY: ${OPEN_AI_API_KEY}
     working_dir: /go/src
     volumes:
