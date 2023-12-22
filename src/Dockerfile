@@ -1,5 +1,5 @@
 ## ビルドステージ
-FROM --platform=linux/amd64 golang:1.19-alpine AS builder
+FROM --platform=linux/amd64 golang:1.21-alpine AS builder
 ENV CGO_ENABLED=0
 ENV GOOS=linux
 ENV GOARCH=amd64
