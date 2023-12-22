@@ -4,7 +4,7 @@ services:
     container_name: app
     build:
       context: ./src
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.local
     stdin_open: true
     environment:
       ENVIRONMENT: ${ENVIRONMENT}

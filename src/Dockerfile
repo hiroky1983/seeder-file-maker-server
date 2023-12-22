@@ -1,20 +1,13 @@
-FROM --platform=linux/amd64 golang:1.21-alpine
-
-ENV CGO_ENABLED=0 \
-    GOOS=linux \
-    GOARCH=amd64  \
-    ROOTPATH=/go/src 
-
+## ビルドステージ
+FROM --platform=linux/amd64 golang:1.19-alpine AS builder
+ENV CGO_ENABLED=0
+ENV GOOS=linux
+ENV GOARCH=amd64
+ENV GRPC_HEALTH_PROBE_VERSION=v0.4.19
 WORKDIR /go/src
-
-COPY go.mod go.sum .air.toml ./
+COPY go.mod go.sum ./
 RUN go mod download
-RUN go install github.com/cosmtrek/air@v1.40.4
-RUN go install honnef.co/go/tools/cmd/staticcheck@latest
-RUN go install github.com/gin-gonic/gin
-RUN go mod tidy
 COPY . .
-
-EXPOSE 8080
-
-CMD ["air", "-c", ".air.toml"]
+RUN go build \
+    -o /go/bin/api_service \
+    -ldflags '-s -w'
