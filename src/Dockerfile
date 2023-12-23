@@ -7,7 +7,5 @@ WORKDIR /go/src
 COPY go.mod go.sum ./
 RUN go mod download
 COPY . .
-RUN go build \
-    -o /go/bin/api_service \
-    -ldflags '-s -w'
-CMD ["/app/api_service"]
+RUN go build -tags netgo -ldflags '-s -w' -o app
+CMD ["./app"]
