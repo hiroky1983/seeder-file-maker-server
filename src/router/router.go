@@ -44,11 +44,11 @@ func NewRouter(a *controller.App) *gin.Engine {
 	r.POST("/prompt", func(c *gin.Context) {
 		a.Prompt(c)
 	})
-	r.GET("/", hoge)
+	r.GET("/", hello)
 	return r
 }
 
-func hoge(c *gin.Context) {
+func hello(c *gin.Context) {
 	response := gin.H{
 		"message": "Hello World!",
 	}
