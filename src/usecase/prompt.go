@@ -23,9 +23,9 @@ func NewPrompt(promptRepo repository.Prompt) *Prompt {
 }
 
 func (p *Prompt) Prompt(c *openai.Client, prom string) (string, error) {
-	if err := prompt.ValidatePromptText(prom); err != nil {
-		return "", err
-	}
+	// if err := prompt.ValidatePromptText(prom); err != nil {
+	// 	return "", err
+	// }
 
 	template := prompt.GeneratePromptText(prom)
 	prompt, err := p.promptRepo.Prompt(c, template)

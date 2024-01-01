@@ -5,14 +5,16 @@ import (
 	"net/http"
 	"seeder-app/config"
 	"seeder-app/controller"
+	"seeder-app/logger"
 	"time"
 
 	"github.com/gin-contrib/cors"
+	"github.com/gin-contrib/requestid"
 	"github.com/gin-gonic/gin"
 )
 
 func NewRouter(a *controller.App) *gin.Engine {
-	r := gin.Default()
+	r := gin.New()
 	cnf, _ := config.NewConfig(context.Background())
 	r.Use(cors.New(cors.Config{
 		// アクセスを許可したいアクセス元
@@ -40,6 +42,10 @@ func NewRouter(a *controller.App) *gin.Engine {
 		// preflightリクエストの結果をキャッシュする時間
 		MaxAge: 24 * time.Hour,
 	}))
+
+	r.Use(requestid.New()) 
+	r.Use(gin.LoggerWithConfig(logger.CustomLogger())) 
+	r.Use(gin.Recovery())
 
 	r.POST("/prompt", func(c *gin.Context) {
 		a.Prompt(c)
