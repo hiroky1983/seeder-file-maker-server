@@ -43,8 +43,8 @@ func NewRouter(a *controller.App) *gin.Engine {
 		MaxAge: 24 * time.Hour,
 	}))
 
-	r.Use(requestid.New()) 
-	r.Use(gin.LoggerWithConfig(logger.CustomLogger())) 
+	r.Use(requestid.New())
+	r.Use(gin.LoggerWithConfig(logger.CustomLogger()))
 	r.Use(gin.Recovery())
 
 	r.POST("/prompt", func(c *gin.Context) {
